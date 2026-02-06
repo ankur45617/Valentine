@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Shiwangi ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+
+  .box {
+    background: rgba(255,255,255,0.28);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    animation: fadeIn 2s;
+    max-width: 450px;
+  }
+
+  .glow {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow:
+      0 0 10px #ff4d6d,
+      0 0 20px #ff4d6d,
+      0 0 40px #ff1a4d,
+      0 0 80px #ff1a4d;
+    animation: heartbeat 2s infinite, glowPulse 3s infinite;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #4d0026;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    min-height: 90px;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 14px 35px;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  .yes {
+    background: linear-gradient(45deg, #ff1a4d, #ff4d6d);
+    font-size: 1.2rem;
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 22px;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes glowPulse {
+    0% {
+      text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+    }
+    50% {
+      text-shadow: 0 0 30px #ff99ac, 0 0 80px #ff1a4d;
+    }
+    100% {
+      text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+    }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.06); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <div class="glow">Shiwangi ❤️</div>
+  <p id="text">
+    From the moment you came into my life, every day started feeling like love ✨
+  </p>
+  <button onclick="next()">Next 💌</button>
+  <br>
+  <button class="yes" onclick="yes()">YES 💖</button>
+</div>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<script>
+  const days = [
+    "🌹 Rose Day: Every rose reminds me that my heart chose you, Shiwangi.",
+    "🍫 Chocolate Day: Like chocolate, you melt my worries and sweeten my soul.",
+    "🧸 Teddy Day: If I could, I’d turn myself into a teddy just to be in your arms.",
+    "💍 Promise Day: I promise to stand by you, in every version of life.",
+    "🤗 Hug Day: My safest place will always be your hug.",
+    "💋 Kiss Day: One kiss from you can silence the entire world.",
+    "❤️ Valentine’s Day: It’s not about today… it’s about forever with you."
+  ];
+
+  let i = 0;
+  const text = document.getElementById("text");
+  const music = document.getElementById("music");
+
+  function next() {
+    if (music.paused) music.play();
+    text.innerText = days[i];
+    i = (i + 1) % days.length;
+    hearts();
+  }
+
+  function yes() {
+    text.innerText = 
+      "You just made me the happiest person alive 💖\nI love you, Shiwangi. Forever & always.";
+    hearts(40);
+  }
+
+  function hearts(count = 25) {
+    for (let j = 0; j < count; j++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  }
+</script>
+
+</body>
+</html>
